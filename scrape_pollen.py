@@ -26,7 +26,7 @@ rows = result_table.findChildren('tr')
 date_row = rows[1].findChildren('th')
 
 date_res = []
-for i in range(1, 4):
+for i in range(1, len(date_row)):
     date_res.append(datetime.strptime(date_row[i].string, met_date))
 
 
@@ -36,7 +36,7 @@ pollen_results = []
 for region_row in region_rows:
     data_fields = region_row.findChildren('td')
     region = data_fields[0].string
-    for i in range(1, 4):
+    for i in range(1, len(date_row)):
         pollen_results.append(PollenResult(region,
                               date_res[i-1].strftime(standard_date),
                               data_fields[i].string))
